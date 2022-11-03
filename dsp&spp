@@ -1,0 +1,90 @@
+public static int total(int pembayaran, String jalurMasuk, int bulan) {
+        String golongan = "a";
+        int dsp = 0;
+        int spp = 0;
+        if (pembayaran < 2_000_000) {
+            golongan = "a";
+        } else if (pembayaran >= 2_000_000 && pembayaran < 10_000_000) {
+            golongan = "b";
+        } else if (pembayaran >= 10_000_000) {
+            golongan = "c";
+        }
+
+        if (jalurMasuk.equalsIgnoreCase("sbmptn")) {
+            switch (golongan) {
+                case "a":
+                    System.out.println("Kategori = A");
+                    spp = 500_000;
+                    dsp = 5_000_000;
+                    break;
+                case "b":
+                    System.out.println("Kategori = B");
+                    spp = 1_000_000;
+                    dsp = 15_000_000;
+                    break;
+                case "c":
+                    System.out.println("Kategori = C");
+                    spp = 2_000_000;
+                    dsp = 30_000_000;
+                    break;
+            }
+        } else if (jalurMasuk.equalsIgnoreCase("snmptn")) {
+            switch (golongan) {
+                case "a":
+                    System.out.println("Kategori = A");
+                    spp = 500_000;
+                    dsp = 7_000_000;
+                    break;
+                case "b":
+                    System.out.println("Kategori = B");
+                    spp = 1_000_000;
+                    dsp = 17_000_000;
+                    break;
+                case "c":
+                    System.out.println("Kategori = C");
+                    spp = 2_000_000;
+                    dsp = 35_000_000;
+                    break;
+            }
+        } else if (jalurMasuk.equalsIgnoreCase("mandiri")) {
+            switch (golongan) {
+                case "a":
+                    System.out.println("Kategori = A");
+                    spp = 1_000_000;
+                    dsp = 10_000_000;
+                    break;
+                case "b":
+                    System.out.println("Kategori = B");
+                    spp = 2_000_000;
+                    dsp = 25_000_000;
+                    break;
+                case "c":
+                    System.out.println("Kategori = C");
+                    spp = 3_000_000;
+                    dsp = 50_000_000;
+                    break;
+            }
+        }
+        return dsp + (spp * bulan);
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner (System.in);
+        int id, pendapatan, bulan;
+        String nama [] = {"Mira","Nina","Oemar","Pena"};
+        String jalurMasuk [] = {"SBMPTN","SNMPTN","MANDIRI","SBMPTN"};
+        System.out.print("Masukkan ID = ");
+        id = in.nextInt();
+        System.out.print("Masukkan pendapatan orang tua = ");
+        pendapatan = in.nextInt();
+        System.out.print("Jumlah bulan = ");
+        bulan = in.nextInt();
+        System.out.println("");
+        
+        
+        System.out.println("ID = "+id);
+        System.out.println("Nama Mahasiswa = "+nama[id-1]);
+        System.out.println("Jalur Masuk = "+jalurMasuk [id-1]);
+        System.out.println("Pendapatan = "+pendapatan);
+        System.out.println("total = "+total(pendapatan, jalurMasuk [id-1], bulan));
+    }
